@@ -1,75 +1,80 @@
-# React + TypeScript + Vite
+# Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard ini merupakan proyek pribadi yang dirancang untuk efisiensi dan kemudahan navigasi harian.
+Dibuat dengan menggunakan arsitektur React dan Vite dengan alur kerja modern dan berbasis fitur-fitur terbaru.
 
-Currently, two official plugins are available:
+## Prasyarat
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Pastikan sebelum anda menginstal dan menjalankan aplikasi, anda telah menginstal:
 
-## React Compiler
+| Tools | Versi Minimum | Cara Cek |
+|-------|---------------|----------|
+| [Node.js](https://nodejs.org) | v20+ (disarankan LTS) | `node -v` |
+| npm | v10+ (bawaan Node.js) | `npm -v` |
+| Git | v2.30+ | `git --version` |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Core:** [React 19](https://react.dev/), [Vite](https://vitejs.dev/), [TypeScript](https://www.typescriptlang.org/)
+* **Styling & UI:** [Tailwind CSS v4](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), [Lucide React](https://lucide.dev/)
+* **State Management:** [Zustand](https://zustand-demo.pmnd.rs/)
+* **Data Fetching:** [TanStack Query (React Query)](https://tanstack.com/query/v5)
+* **Form & Validation:** [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/)
+* **Data Visualization:** [Recharts](https://recharts.org/)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Proses Instalasi & Menjalankan Project
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+### 1. Clone Repository
+```bash
+git clone <repository-url>
+cd Dashboard
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
+```bash
+# Instalasi dependensi
+npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 3. Install Komponen Tambahan Shadcn (UI)
+```bash
+# Instalasi komponen shadcn/ui
+npx shadcn@latest add <komponen>
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 4. Run Development Server
+```bash
+npm run dev
+```
 
+### 5. Run Build
+```bash
+npm run build
+```
+
+
+## 📂 Struktur Folder
+
+Proyek ini mengadopsi struktur *feature-based* dan menggunakan *path alias* (`@/` merujuk ke folder `src/`):
+
+```text
+src/
+├── assets/          # Berkas statis (gambar, font, ikon svg)
+├── components/      # Komponen global
+│   ├── common/      # Komponen umum (PageHeader, DataTable)
+│   ├── layout/      # Layout utama (Sidebar, Header, Navbar)
+│   └── ui/          # Komponen UI atomic dari shadcn/ui
+├── features/        # Modul independen berbasis fitur (projects, analytics, settings)
+│   └── projects/
+│       ├── api/     # Custom hooks untuk data fetching
+│       ├── components/ # UI khusus fitur proyek
+│       └── types/   # Type definition khusus proyek
+├── hooks/           # Custom React hooks global
+├── lib/             # Konfigurasi library (utils.ts, axios.ts, query-client.ts)
+├── store/           # State global (Zustand)
+├── types/           # Type definition global
+├── App.tsx          # Router / Kerangka utama
+└── main.tsx         # Entry point aplikasi
 ```
