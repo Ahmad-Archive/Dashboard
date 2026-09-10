@@ -70,8 +70,7 @@ export default function Sidebar() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="flex items-center gap-3.5 p-6 rounded-md text-base font-medium transition-colors hover:bg-[#818cf8] text-# hover:text-black"
-              >
+                className="flex items-center gap-3.5 p-6 rounded-md text-base font-medium transition-colors hover:bg-[#818cf8] text-# hover:text-black">
                 <Icon className="w-6 h-6" />
                 <span>{item.name}</span>
               </Link>
