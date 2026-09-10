@@ -1,0 +1,98 @@
+import { LayoutDashboard, Activity, Settings, Folder, ListChecks, Code, ListTree } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Link } from 'react-router-dom'
+import '@/index.css'
+
+export default function Sidebar() {
+  const menuItems = [
+    { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
+    { name: 'Daftar Proyek', icon: Folder, href: '/projects' },
+    { name: 'Aktivitas', icon: Activity, href: '/activity' },
+    { name: 'Semua Tasks', icon: ListChecks, href: '/tasks' },
+    { name: 'Detail Proyek', icon: ListTree, href: '/project' },
+  ]
+
+  const systemItems = [
+    { name: 'Pengaturan', icon: Settings, href: '/settings' },
+    { name: 'Dokumentasi & API', icon: Code, href: '/Dokumentasi&API' },
+  ]
+
+  return (
+    <aside className="sidebar">
+      {/* Logo & Navigasi */}
+        <div className="flex items-center gap-3 px-2">
+          {/* Logo */}
+          <div className="w-10 h-10 bg-[#0b0f17] rounded-lg flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6">
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M625.6 516.8l19.2 81.6 104-38.4 4.8 14.4-110.4 40L560 824l-14.4-6.4 83.2-203.2-169.6-25.6 64 217.6c3.2 8-1.6 17.6-11.2 19.2s-17.6-1.6-19.2-11.2l-68.8-232-153.6-22.4 1.6-16 145.6 22.4-28.8-96-116.8 59.2-14.4-28.8 129.6-65.6L480 217.6 254.4 499.2l-12.8-9.6L480 190.4l9.6 6.4 27.2 11.2-96 227.2 177.6 41.6-64-268.8 16-3.2 67.2 278.4 136 32c8 1.6 14.4 11.2 11.2 19.2-1.6 8-11.2 14.4-19.2 11.2l-120-28.8zM608 512l-185.6-43.2 30.4 102.4 176 25.6L608 512z m-46.4-313.6l12.8-9.6L784 484.8l-12.8 9.6-209.6-296zM768 588.8l12.8 9.6-201.6 240-12.8-9.6 201.6-240z m-278.4 240l-11.2 11.2-232-243.2 11.2-11.2 232 243.2z" fill="#94a3bb">
+                </path>
+                <path d="M400 448m-64 0a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" fill="#2F4BFF">
+                </path>
+                <path d="M640 608m-56 0a56 56 0 1 0 112 0 56 56 0 1 0-112 0Z" fill="#2F4BFF">
+                </path>
+                <path d="M208 624c-44.8 0-80-35.2-80-80s35.2-80 80-80 80 35.2 80 80-35.2 80-80 80z m0-32c27.2 0 48-20.8 48-48s-20.8-48-48-48-48 20.8-48 48 20.8 48 48 48zM528 960c-44.8 0-80-35.2-80-80s35.2-80 80-80 80 35.2 80 80-35.2 80-80 80z m0-32c27.2 0 48-20.8 48-48s-20.8-48-48-48-48 20.8-48 48 20.8 48 48 48zM528 224c-44.8 0-80-35.2-80-80s35.2-80 80-80 80 35.2 80 80-35.2 80-80 80z m0-32c27.2 0 48-20.8 48-48s-20.8-48-48-48-48 20.8-48 48 20.8 48 48 48zM816 624c-44.8 0-80-35.2-80-80s35.2-80 80-80 80 35.2 80 80-35.2 80-80 80z m0-32c27.2 0 48-20.8 48-48s-20.8-48-48-48-48 20.8-48 48 20.8 48 48 48z" fill="#2F4BFF">
+                </path>
+              </g>
+            </svg>
+          </div>
+
+          {/* Teks Logo / Nama */}
+          <span className="text-lg font-bold tracking-wide">
+            AhmadDev
+          </span>
+        </div>
+
+      {/* Menu Navigasi */}
+      <div className='flex flex-col gap-6'>
+        <nav className="flex flex-col gap-1.5">
+          <span className="text-xs font-semibold uppercase text-gray-400 px-2 tracking-normal">Menu Utama</span>
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="flex items-center gap-3.5 py-6 rounded-md text-base font-medium transition-colors hover:bg-[#818cf8] text-# hover:text-black"
+              >
+                <Icon className="w-6 h-6" />
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
+
+          <span className="text-xs font-semibold uppercase text-gray-400 px-2 py-2 tracking-wider">Sistem & Dukungan</span>
+          {systemItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="flex items-center gap-3.5 p-6 rounded-md text-base font-medium transition-colors hover:bg-[#818cf8] text-# hover:text-black"
+              >
+                <Icon className="w-6 h-6" />
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
+
+      {/* Profil Pengguna */}
+      <div className="flex m-4 items-center gap-3 py-2 px-6 border-t border-gray-700/60 mt-auto">
+        <div className="flex items-center gap-2 py-2 px-6">
+          <Avatar className="rounded-lg">
+            <AvatarImage alt="@ahmaddev" />
+            <AvatarFallback className="rounded-lg text-white">AD</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-white">AhmadDev</span>
+            <span className="text-xs text-gray-400">Web Developer</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  )
+}
