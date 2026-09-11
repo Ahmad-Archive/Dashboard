@@ -119,7 +119,7 @@ export default function Sidebar() {
           </div>
         </div>
         <div>
-          <Link to="/login" className="flex items-center gap-2 text-sm font-medium text-gray-400/60 hover:text-red-500">
+          <Link to="/login" className="flex items-center gap-2 text-sm font-medium text-gray-400/60 hover:text-red-400/60">
               <LogOut className="w-6 h-6" />
             </Link>
           </div>
