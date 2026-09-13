@@ -1,19 +1,9 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Dashboard from '@/pages/DashboardPage'
-import Login from '@/pages/LoginPage'
+import { RouterProvider } from 'react-router-dom'
+import { router } from '@/routes'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Dashboard />} />
-      </Routes>
-    </Router>
+    <RouterProvider router={router} />
   )
 }
-
-export default App
