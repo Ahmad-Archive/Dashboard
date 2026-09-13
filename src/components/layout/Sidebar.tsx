@@ -1,20 +1,16 @@
-import { LayoutDashboard, Activity, Settings, Folder, ListChecks, Code, ListTree, LogOut } from 'lucide-react'
+import { LayoutDashboard, Activity, Settings, Folder, ListChecks, ListTree, LogOut } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Link, NavLink } from 'react-router-dom'
 import '@/index.css'
 
 export default function Sidebar() {
   const menuItems = [
-    { name: 'Dashboard', icon: LayoutDashboard, to: '/' },
+    { name: 'Dashboard', icon: LayoutDashboard, to: '/dashboard' },
     { name: 'Daftar Proyek', icon: Folder, to: '/projects' },
     { name: 'Aktivitas', icon: Activity, to: '/activity' },
     { name: 'Semua Tasks', icon: ListChecks, to: '/tasks' },
     { name: 'Detail Proyek', icon: ListTree, to: '/project' },
-  ]
-
-  const systemItems = [
     { name: 'Pengaturan', icon: Settings, to: '/settings' },
-    { name: 'Dokumentasi & API', icon: Code, to: '/dokumentasi' },
   ]
 
   return (
@@ -53,7 +49,6 @@ export default function Sidebar() {
       {/* Menu Navigasi */}
       <nav className="flex-1 overflow-y-auto flex flex-col gap-2 mt-6 px-2">
         <div className="flex flex-col">
-          <span className="text-xs font-semibold uppercase text-gray-400 pb-2 tracking-normal">Menu Utama</span>
           {menuItems.map(({ name, icon: Icon, to }) => {
             return (
               <NavLink
@@ -76,32 +71,6 @@ export default function Sidebar() {
               </NavLink>
             );
           })}
-          </div>
-
-          <div className="flex flex-col">
-            <span className="text-xs font-semibold uppercase text-gray-400 pb-2 mt-4 tracking-wider">Sistem & Dukungan</span>
-            {systemItems.map(({ name, icon: Icon, to }) => {
-              return (
-                <NavLink
-                  key={name}
-                  to={to}
-                  className={({ isActive }) =>
-                                `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-base font-medium ${
-                                  isActive
-                                    ? 'text-white'
-                                    : 'text-[#6b7280] hover:text-[#e8eaed]'
-                                }`
-                              }
-                              style={({ isActive }) => isActive
-                                ? { background: 'rgba(79,142,247,0.12)', color: '#4f8ef7' }
-                                : { background: 'transparent' }
-                              }
-                            >
-                  <Icon className="w-5 h-5" />
-                  <span>{name}</span>
-                </NavLink>
-              );
-            })}
           </div>
         </nav>
         </div>
