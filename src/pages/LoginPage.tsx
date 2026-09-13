@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
-import { Eye, EyeClosed, EyeOff } from 'lucide-react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react'
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
